@@ -2,6 +2,8 @@
 Este é um aplicativo no qual seu intuito é mostrar receitas de diferentes categorias.
 
 ### O que eu aprendi neste aplicativo
+Neste aplicativo, aprendi conceitos de Inherited Widget
+<br>
 
 > :construction: Projeto em construção :construction:
 
@@ -40,6 +42,9 @@ E aperte para rodar o seu código, após alguns segundos o programa deve ser abe
 Este projeto foi totalmente feito a partir de um curso da udemy, na qual você pode [clicar aqui](https://www.udemy.com/course/curso-flutter/?couponCode=ST6MT42324) para acessar o curso<br>
 
 Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
+- Inherited Widget
+
+<br>
 > :construction: Projeto em construção :construction:
 
 
