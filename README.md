@@ -3,12 +3,12 @@ Este é um aplicativo no qual seu intuito é mostrar receitas de diferentes cate
 
 ### O que eu aprendi neste aplicativo
 
-:construction: Projeto em construção :construction:
+> :construction: Projeto em construção :construction:
 
 
 ### Layout
 
-:construction: Projeto em construção :construction:
+> :construction: Projeto em construção :construction:
 
 
 #### GIFS
