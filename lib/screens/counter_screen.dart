@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/providers/counter.dart';
-import '../models/product.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({
@@ -19,7 +18,7 @@ class _CounterScreenState extends State<CounterScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('Exemplo Contador'),
+        title: const Text('Exemplo Contador'),
       ),
       body: Column(
         children: [

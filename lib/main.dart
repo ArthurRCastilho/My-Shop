@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/providers/counter.dart';
-import 'package:myshop/screens/counter_screen.dart';
 import 'package:myshop/screens/product_detail_screen.dart';
 import 'package:myshop/screens/products_overview_screen.dart';
 import 'package:myshop/utils/app_routes.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
         ),
         home: ProductsOverviewScreen(),
         routes: {
-          AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailScreen(),
+          AppRoutes.PRODUCT_DETAIL: (ctx) => const ProductDetailScreen(),
         },
         debugShowCheckedModeBanner: false,
       ),
