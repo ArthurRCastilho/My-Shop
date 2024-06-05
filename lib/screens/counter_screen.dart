@@ -29,7 +29,7 @@ class _CounterScreenState extends State<CounterScreen> {
                 provider?.state.inc();
               });
             },
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           ),
           IconButton(
             onPressed: () {
@@ -37,7 +37,7 @@ class _CounterScreenState extends State<CounterScreen> {
                 provider?.state.dec();
               });
             },
-            icon: Icon(Icons.remove),
+            icon: const Icon(Icons.remove),
           ),
         ],
       ),

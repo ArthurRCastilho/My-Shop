@@ -4,6 +4,8 @@ import 'package:myshop/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
+  const ProductItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context);
