@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myshop/providers/counter.dart';
+import 'package:myshop/models/product_list.dart';
 import 'package:myshop/screens/product_detail_screen.dart';
 import 'package:myshop/screens/products_overview_screen.dart';
 import 'package:myshop/utils/app_routes.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CounterProvider(
+    return ChangeNotifierProvider(
+      create: (_) => ProductList(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

@@ -2,7 +2,7 @@
 Este é um aplicativo no qual seu intuito é mostrar receitas de diferentes categorias.
 
 ### O que eu aprendi neste aplicativo
-Neste aplicativo, aprendi conceitos de Inherited Widget, provider,
+Neste aplicativo, aprendi conceitos de Inherited Widget, provider, padrão de projeto Observer, ChangeNotifier
 <br>
 
 > :construction: Projeto em construção :construction:
@@ -44,6 +44,7 @@ Este projeto foi totalmente feito a partir de um curso da udemy, na qual você p
 Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
 - Inherited Widget;
 - Provider;
+- ChangeNotifier
 
 <br>
 > :construction: Projeto em construção :construction:
