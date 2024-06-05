@@ -44,7 +44,8 @@ Este projeto foi totalmente feito a partir de um curso da udemy, na qual você p
 Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
 - Inherited Widget;
 - Provider;
-- ChangeNotifier
+- ChangeNotifier;
+- MultiProvider;
 
 <br>
 > :construction: Projeto em construção :construction:
