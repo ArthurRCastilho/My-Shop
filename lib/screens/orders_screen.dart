@@ -15,9 +15,13 @@ class OrdersScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Meus Pedidos'),
       ),
-      body: ListView.builder(
-          itemCount: orders.itemsCount,
-          itemBuilder: (ctx, i) => OrderWidget(orders.items[i])),
+      body: orders.itemsCount == 0
+          ? const Center(
+              child: Text('Você não fez nenhuma transação ainda!'),
+            )
+          : ListView.builder(
+              itemCount: orders.itemsCount,
+              itemBuilder: (ctx, i) => OrderWidget(orders.items[i])),
       drawer: const AppDrawer(),
     );
   }
