@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.CART: (ctx) => const CartScreen(),
           AppRoutes.ORDERS: (ctx) => const OrdersScreen(),
           AppRoutes.PRODUCTS_SCREEN: (ctx) => const ProductsScreen(),
-          AppRoutes.PRODUCT_FORM_SCREEN: (ctx) => const ProductFormScreen(),
+          AppRoutes.PRODUCT_FORM: (ctx) => const ProductFormScreen(),
         },
         debugShowCheckedModeBanner: false,
       ),
