@@ -2,7 +2,7 @@
 Este é um aplicativo no qual seu intuito é mostrar receitas de diferentes categorias.
 
 ### O que eu aprendi neste aplicativo
-Neste aplicativo, aprendi conceitos de Inherited Widget, provider, padrão de projeto Observer, ChangeNotifier, SnackBar, DialogBox
+Neste aplicativo, aprendi conceitos de Inherited Widget, provider, padrão de projeto Observer, ChangeNotifier, SnackBar, DialogBox, Formularios
 <br>
 
 > :construction: Projeto em construção :construction:
@@ -48,6 +48,7 @@ Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
 - MultiProvider;
 - SnackBar;
 - Dialog Box;
+- Forms do Flutter
 
 <br>
 > :construction: Projeto em construção :construction:
