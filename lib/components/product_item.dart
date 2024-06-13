@@ -3,6 +3,7 @@ import 'package:myshop/models/product.dart';
 import 'package:myshop/models/product_list.dart';
 import 'package:myshop/utils/app_routes.dart';
 import 'package:provider/provider.dart';
+import '../exceptions/http_exception.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
@@ -13,6 +14,8 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final msg = ScaffoldMessenger.of(context);
+
     return ListTile(
       leading: CircleAvatar(
         backgroundImage: NetworkImage(product.imageUrl),
@@ -37,37 +40,33 @@ class ProductItem extends StatelessWidget {
                 showDialog<bool>(
                   context: context,
                   builder: (ctx) => AlertDialog(
-                    title: Text('Excluir Produto?'),
-                    content: Text('Tem certeza que deseja excluir o produto?'),
+                    title: const Text('Excluir Produto?'),
+                    content:
+                        const Text('Tem certeza que deseja excluir o produto?'),
                     actions: [
                       TextButton(
-                        child: Text('não'),
-                        onPressed: () {
-                          Provider.of<ProductList>(
-                            context,
-                            listen: false,
-                          ).removeProduct(product);
-                          Navigator.of(context).pop(true);
-                        },
+                        child: const Text('Não'),
+                        onPressed: () => Navigator.of(context).pop(false),
                       ),
                       TextButton(
-                        child: const Text('Sim'),
-                        onPressed: () {
-                          Provider.of<ProductList>(
-                            context,
-                            listen: false,
-                          ).removeProduct(product);
-                          Navigator.of(context).pop(false);
-                        },
-                      ),
+                          child: const Text('Sim'),
+                          onPressed: () => Navigator.of(context).pop(true)),
                     ],
                   ),
-                ).then((value) {
+                ).then((value) async {
                   if (value ?? false) {
-                    Provider.of<ProductList>(
-                      context,
-                      listen: false,
-                    ).removeProduct(product);
+                    try {
+                      await Provider.of<ProductList>(
+                        context,
+                        listen: false,
+                      ).removeProduct(product);
+                    } on HttpExceptionn catch (error) {
+                      msg.showSnackBar(
+                        SnackBar(
+                          content: Text(error.toString()),
+                        ),
+                      );
+                    }
                   }
                 });
               },
