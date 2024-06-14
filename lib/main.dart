@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myshop/models/cart.dart';
 import 'package:myshop/models/order_list.dart';
 import 'package:myshop/models/product_list.dart';
+import 'package:myshop/screens/auth_screen.dart';
 import 'package:myshop/screens/cart_screen.dart';
 import 'package:myshop/screens/orders_screen.dart';
 import 'package:myshop/screens/product_detail_screen.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.purple,
           colorScheme: Theme.of(context).colorScheme.copyWith(
                 secondary: Colors.deepOrange,
+                tertiary: Colors.white,
               ),
           fontFamily: 'Lato',
           appBarTheme: const AppBarTheme(
@@ -52,6 +54,7 @@ class MyApp extends StatelessWidget {
         ),
         // home: ProductsOverviewScreen(),
         routes: {
+          AppRoutes.AUTH: (ctx) => AuthScreen(),
           AppRoutes.HOME: (ctx) => ProductsOverviewScreen(),
           AppRoutes.PRODUCT_DETAIL: (ctx) => const ProductDetailScreen(),
           AppRoutes.CART: (ctx) => const CartScreen(),
