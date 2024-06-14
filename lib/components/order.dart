@@ -4,8 +4,8 @@ import 'package:myshop/models/order.dart';
 
 class OrderWidget extends StatefulWidget {
   final Order order;
-  const OrderWidget(
-    this.order, {
+  const OrderWidget({
+    required this.order,
     super.key,
   });
 
