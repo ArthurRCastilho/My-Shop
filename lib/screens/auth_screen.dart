@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:myshop/components/auth_form.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -29,6 +30,7 @@ class AuthScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
+                  margin: const EdgeInsets.only(bottom: 20),
                   padding: const EdgeInsets.symmetric(
                     vertical: 10,
                     horizontal: 70,
@@ -54,6 +56,7 @@ class AuthScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                AuthForm(),
               ],
             ),
           ),
