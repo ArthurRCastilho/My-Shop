@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Auth with ChangeNotifier {
-  static const _url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB2hMkiv4JeWRTuECZn5sM0BTQSFpcgY0A';
-
+  
   Future<void> _authenticate(
     String email,
     String password,
