@@ -10,8 +10,8 @@ Neste aplicativo, aprendi conceitos de Inherited Widget, provider, padrão de pr
 
 ### Layout
 
-> :construction: Projeto em construção :construction:
-<img src="./assets/images/AuthScreen.pngg" alt="AuthScreen" width="270px"> <img src="./assets/images/SignupScreen.png" alt="SignupScreen" width="270px"> <img src="./assets/images/ProductsScreen.png" alt="ProductsScreen" width="270px"> 
+> :construction: Projeto em construção :construction: <br>
+<img src="./assets/images/AuthScreen.png" alt="AuthScreen" width="270px"> <img src="./assets/images/SignupScreen.png" alt="SignupScreen" width="270px"> <img src="./assets/images/ProductsScreen.png" alt="ProductsScreen" width="270px"> 
 <img src="./assets/images/OrdersScreen.png" alt="OrdersScreen" width="270px"> <img src="./assets/images/AddProduct.png" alt="AddProductScreen" width="270px"> <img src="./assets/images/CartPage.png" alt="CartScreen" width="270px">
 
 
