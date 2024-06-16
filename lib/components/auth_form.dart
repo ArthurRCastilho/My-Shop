@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myshop/exceptions/auth_exception.dart';
 import 'package:myshop/models/auth.dart';
 import 'package:provider/provider.dart';
 
@@ -35,6 +36,22 @@ class _AuthFormState extends State<AuthForm> {
     });
   }
 
+  void _showErrorDialog(String msg) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Ocorreu um Erro'),
+        content: Text(msg),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Fechar'),
+          ),
+        ],
+      ),
+    );
+  }
+
   Future<void> _submit() async {
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
@@ -46,18 +63,24 @@ class _AuthFormState extends State<AuthForm> {
     _formKey.currentState?.save();
     Auth auth = Provider.of(context, listen: false);
 
-    if (_isLogin()) {
-      // Login
-      await auth.login(
-        _authData['email']!,
-        _authData['password']!,
-      );
-    } else {
-      // Registrar
-      await auth.signup(
-        _authData['email']!,
-        _authData['password']!,
-      );
+    try {
+      if (_isLogin()) {
+        // Login
+        await auth.login(
+          _authData['email']!,
+          _authData['password']!,
+        );
+      } else {
+        // Registrar
+        await auth.signup(
+          _authData['email']!,
+          _authData['password']!,
+        );
+      }
+    } on AuthException catch (error) {
+      _showErrorDialog(error.toString());
+    } catch (error) {
+      _showErrorDialog('Ocorreu um erro inesperado!');
     }
 
     setState(() => _isLoading = false);
@@ -99,8 +122,8 @@ class _AuthFormState extends State<AuthForm> {
                 onSaved: (password) => _authData['password'] = password ?? '',
                 validator: (_password) {
                   final password = _password ?? '';
-                  if (password.isEmpty || password.length < 5) {
-                    return 'Senha precisa ter pelo menos 5 caracteres';
+                  if (password.isEmpty || password.length < 6) {
+                    return 'Senha precisa ter pelo menos 6 caracteres';
                   }
                   return null;
                 },

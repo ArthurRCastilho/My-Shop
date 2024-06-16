@@ -3,13 +3,12 @@ import 'package:myshop/models/auth.dart';
 import 'package:myshop/models/cart.dart';
 import 'package:myshop/models/order_list.dart';
 import 'package:myshop/models/product_list.dart';
-import 'package:myshop/screens/auth_screen.dart';
+import 'package:myshop/screens/auth_or_home_screen.dart';
 import 'package:myshop/screens/cart_screen.dart';
 import 'package:myshop/screens/orders_screen.dart';
 import 'package:myshop/screens/product_detail_screen.dart';
 import 'package:myshop/screens/product_form_screen.dart';
 import 'package:myshop/screens/products_screen.dart';
-import 'package:myshop/screens/products_overview_screen.dart';
 import 'package:myshop/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
@@ -25,17 +24,26 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ProductList(),
+          create: (_) => Auth(),
+        ),
+        ChangeNotifierProxyProvider<Auth, ProductList>(
+          create: (_) => ProductList('', []),
+          update: (ctx, auth, previous) {
+            return ProductList(
+              auth.token ?? '',
+              previous?.items ?? [],
+            );
+          },
+        ),
+        ChangeNotifierProxyProvider<Auth, OrderList>(
+          create: (_) => OrderList('', []),
+          update: (ctx, auth, previous) {
+            return OrderList(auth.token ?? '', previous?.items ?? []);
+          },
         ),
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => OrderList(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Auth(),
-        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -58,8 +66,7 @@ class MyApp extends StatelessWidget {
         ),
         // home: ProductsOverviewScreen(),
         routes: {
-          AppRoutes.AUTH: (ctx) => AuthScreen(),
-          AppRoutes.HOME: (ctx) => ProductsOverviewScreen(),
+          AppRoutes.AUTH_OR_HOME: (ctx) => const AuthOrHomeScreen(),
           AppRoutes.PRODUCT_DETAIL: (ctx) => const ProductDetailScreen(),
           AppRoutes.CART: (ctx) => const CartScreen(),
           AppRoutes.ORDERS: (ctx) => const OrdersScreen(),

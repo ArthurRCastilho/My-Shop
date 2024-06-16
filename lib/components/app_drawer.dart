@@ -11,23 +11,23 @@ class AppDrawer extends StatelessWidget {
         children: [
           AppBar(
             backgroundColor: Theme.of(context).primaryColor,
-            title: Text('Bem Vindo Usuário!'),
+            title: const Text('Bem Vindo Usuário!'),
             automaticallyImplyLeading: false,
           ),
           const Divider(),
           ListTile(
-            leading: Icon(Icons.shop),
-            title: Text('Loja'),
+            leading: const Icon(Icons.shop),
+            title: const Text('Loja'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(
-                AppRoutes.HOME,
+                AppRoutes.AUTH_OR_HOME,
               );
             },
           ),
           const Divider(),
           ListTile(
-            leading: Icon(Icons.payment),
-            title: Text('Pedidos'),
+            leading: const Icon(Icons.payment),
+            title: const Text('Pedidos'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(
                 AppRoutes.ORDERS,
@@ -36,8 +36,8 @@ class AppDrawer extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-            leading: Icon(Icons.manage_search),
-            title: Text('Gerenciar Produtos'),
+            leading: const Icon(Icons.manage_search),
+            title: const Text('Gerenciar Produtos'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(
                 AppRoutes.PRODUCTS_SCREEN,

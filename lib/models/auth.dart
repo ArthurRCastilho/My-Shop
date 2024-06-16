@@ -2,9 +2,31 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:myshop/exceptions/auth_exception.dart';
 
 class Auth with ChangeNotifier {
-  
+  String? _token;
+  String? _email;
+  String? _uid;
+  DateTime? _expiredDate;
+
+  bool get isAuth {
+    final _isValid = _expiredDate?.isAfter(DateTime.now()) ?? false;
+    return _token != null && _isValid;
+  }
+
+  String? get token {
+    return isAuth ? _token : null;
+  }
+
+  String? get email {
+    return isAuth ? _email : null;
+  }
+
+  String? get uid {
+    return isAuth ? _uid : null;
+  }
+
   Future<void> _authenticate(
     String email,
     String password,
@@ -21,14 +43,30 @@ class Auth with ChangeNotifier {
       }),
     );
 
-    print(jsonDecode(response.body));
+    final body = jsonDecode(response.body);
+    if (body['error'] != null) {
+      throw AuthException(body['error']['message']);
+    } else {
+      _token = body['idToken'];
+      _email = body['email'];
+      _uid = body['localId'];
+
+      _expiredDate = DateTime.now().add(
+        Duration(
+          seconds: int.parse(
+            body['expiresIn'],
+          ),
+        ),
+      );
+      notifyListeners();
+    }
   }
 
   Future<void> login(String email, String password) async {
-    _authenticate(email, password, 'signInWithPassword');
+    return _authenticate(email, password, 'signInWithPassword');
   }
 
   Future<void> signup(String email, String password) async {
-    _authenticate(email, password, 'signUp');
+    return _authenticate(email, password, 'signUp');
   }
 }
