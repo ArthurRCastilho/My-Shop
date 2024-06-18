@@ -1,37 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:myshop/exceptions/auth_exception.dart';
-import 'package:myshop/models/auth.dart';
 import 'package:provider/provider.dart';
+import '../exceptions/auth_exception.dart';
+import '../models/auth.dart';
 
-enum AuthMode { Signup, Login }
+enum AuthMode { signup, login }
 
 class AuthForm extends StatefulWidget {
-  const AuthForm({super.key});
+  const AuthForm({Key? key}) : super(key: key);
 
   @override
   State<AuthForm> createState() => _AuthFormState();
 }
 
-class _AuthFormState extends State<AuthForm> {
-  AuthMode _authMode = AuthMode.Login;
+class _AuthFormState extends State<AuthForm>
+    with SingleTickerProviderStateMixin {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
-
-  Map<String, String> _authData = {
+  AuthMode _authMode = AuthMode.login;
+  final Map<String, String> _authData = {
     'email': '',
     'password': '',
   };
 
-  bool _isLogin() => _authMode == AuthMode.Login;
-  bool _isSignup() => _authMode == AuthMode.Signup;
+  AnimationController? _controller;
+  Animation<Size>? _heightAnimation;
+
+  bool _isLogin() => _authMode == AuthMode.login;
+  bool _isSignup() => _authMode == AuthMode.signup;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 300,
+      ),
+    );
+
+    _heightAnimation = Tween(
+      begin: const Size(double.infinity, 310),
+      end: const Size(double.infinity, 400),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.linear,
+      ),
+    );
+
+    // _heightAnimation?.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller?.dispose();
+  }
 
   void _switchAuthMode() {
     setState(() {
       if (_isLogin()) {
-        _authMode = AuthMode.Signup;
+        _authMode = AuthMode.signup;
+        _controller?.forward();
       } else {
-        _authMode = AuthMode.Login;
+        _authMode = AuthMode.login;
+        _controller?.reverse();
       }
     });
   }
@@ -40,7 +75,7 @@ class _AuthFormState extends State<AuthForm> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Ocorreu um Erro'),
+        title: const Text('Ocorreo um Erro'),
         content: Text(msg),
         actions: [
           TextButton(
@@ -54,6 +89,7 @@ class _AuthFormState extends State<AuthForm> {
 
   Future<void> _submit() async {
     final isValid = _formKey.currentState?.validate() ?? false;
+
     if (!isValid) {
       return;
     }
@@ -94,9 +130,12 @@ class _AuthFormState extends State<AuthForm> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.linear,
         padding: const EdgeInsets.all(16),
-        height: _isLogin() ? 320 : 400,
+        // height: _isLogin() ? 310 : 400,
+        height: _isLogin() ? 310 : 410,
         width: deviceSize.width * 0.75,
         child: Form(
           key: _formKey,
@@ -109,7 +148,7 @@ class _AuthFormState extends State<AuthForm> {
                 validator: (_email) {
                   final email = _email ?? '';
                   if (email.trim().isEmpty || !email.contains('@')) {
-                    return 'Informe um email valido';
+                    return 'Informe um e-mail válido.';
                   }
                   return null;
                 },
@@ -122,8 +161,8 @@ class _AuthFormState extends State<AuthForm> {
                 onSaved: (password) => _authData['password'] = password ?? '',
                 validator: (_password) {
                   final password = _password ?? '';
-                  if (password.isEmpty || password.length < 6) {
-                    return 'Senha precisa ter pelo menos 6 caracteres';
+                  if (password.isEmpty || password.length < 5) {
+                    return 'Informe uma senha válida';
                   }
                   return null;
                 },
@@ -139,37 +178,36 @@ class _AuthFormState extends State<AuthForm> {
                       : (_password) {
                           final password = _password ?? '';
                           if (password != _passwordController.text) {
-                            return 'Senhas não conferem';
+                            return 'Senhas informadas não conferem.';
                           }
                           return null;
                         },
                 ),
               const SizedBox(height: 20),
               if (_isLoading)
-                CircularProgressIndicator()
+                const CircularProgressIndicator()
               else
                 ElevatedButton(
                   onPressed: _submit,
-                  child: Text(
-                    _authMode == AuthMode.Login ? 'ENTRAR' : 'REGISTRAR',
-                    style: const TextStyle(color: Colors.white),
-                  ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 8,
-                    ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 8,
+                      ),
+                      backgroundColor: Theme.of(context).primaryColor),
+                  child: Text(
+                    _authMode == AuthMode.login ? 'ENTRAR' : 'REGISTRAR',
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               const Spacer(),
               TextButton(
                 onPressed: _switchAuthMode,
                 child: Text(
-                  _isLogin() ? 'Deseja se Cadastrar?' : 'Já possui uma conta?',
+                  _isLogin() ? 'DESEJA REGISTRAR?' : 'JÁ POSSUI CONTA?',
                 ),
               ),
             ],
