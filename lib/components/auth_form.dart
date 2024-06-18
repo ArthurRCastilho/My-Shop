@@ -24,7 +24,9 @@ class _AuthFormState extends State<AuthForm>
   };
 
   AnimationController? _controller;
-  Animation<Size>? _heightAnimation;
+
+  // Para fazer animações do 0
+  // Animation<Size>? _heightAnimation;
 
   bool _isLogin() => _authMode == AuthMode.login;
   bool _isSignup() => _authMode == AuthMode.signup;
@@ -40,15 +42,17 @@ class _AuthFormState extends State<AuthForm>
       ),
     );
 
-    _heightAnimation = Tween(
-      begin: const Size(double.infinity, 310),
-      end: const Size(double.infinity, 400),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller!,
-        curve: Curves.linear,
-      ),
-    );
+    // => Segundo processo para fazer animações do 0
+
+    // _heightAnimation = Tween(
+    //   begin: const Size(double.infinity, 310),
+    //   end: const Size(double.infinity, 400),
+    // ).animate(
+    //   CurvedAnimation(
+    //     parent: _controller!,
+    //     curve: Curves.linear,
+    //   ),
+    // );
 
     // _heightAnimation?.addListener(() => setState(() {}));
   }
