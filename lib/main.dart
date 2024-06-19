@@ -10,6 +10,7 @@ import 'package:myshop/screens/product_detail_screen.dart';
 import 'package:myshop/screens/product_form_screen.dart';
 import 'package:myshop/screens/products_screen.dart';
 import 'package:myshop/utils/app_routes.dart';
+import 'package:myshop/utils/custom_route.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -67,6 +68,12 @@ class MyApp extends StatelessWidget {
               fontFamily: 'lato',
               fontSize: 22,
             ),
+          ),
+          pageTransitionsTheme: PageTransitionsTheme(
+            builders: {
+              TargetPlatform.iOS: CustomPageTransitionBuilder(),
+              TargetPlatform.android: CustomPageTransitionBuilder(),
+            },
           ),
         ),
         // home: ProductsOverviewScreen(),
