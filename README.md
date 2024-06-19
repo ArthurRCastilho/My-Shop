@@ -44,17 +44,20 @@ E aperte para rodar o seu código, após alguns segundos o programa deve ser abe
 Este projeto foi totalmente feito a partir de um curso da udemy, na qual você pode [clicar aqui](https://www.udemy.com/course/curso-flutter/?couponCode=ST6MT42324) para acessar o curso<br>
 
 Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
-- Inherited Widget;
-- Provider;
-- ChangeNotifier;
-- MultiProvider;
-- SnackBar;
-- Dialog Box;
-- Forms do Flutter;
-- Firebase;
-- Future;
-- Async e Await;
-- AnimatededBuilder;
+- [x] Inherited Widget;
+- [x] Provider;
+- [x] ChangeNotifier;
+- [x] MultiProvider;
+- [x] SnackBar;
+- [x] Dialog Box;
+- [x] Forms do Flutter;
+- [x] Firebase;
+- [x] Future;
+- [x] Async e Await;
+- [x] AnimatededBuilder;
+- [] Transição Hero;
+- [] Slivers;
+- [] Transições de telas;
 
 <br>
 > :construction: Projeto em construção :construction:
