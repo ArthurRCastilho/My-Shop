@@ -56,7 +56,7 @@ Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
 - [x] Async e Await;
 - [x] AnimatededBuilder;
 - [x] Imagem Temporaria;
-- [] Transição Hero;
+- [x] Transição Hero;
 - [] Slivers;
 - [] Transições de telas;
 
