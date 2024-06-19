@@ -24,6 +24,9 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed(
                 AppRoutes.AUTH_OR_HOME,
               );
+              // Navigator.of(context).pushReplacement(
+              //   CustomRoute(builder: (ctx) => ProductsOverviewScreen()),
+              // );
             },
           ),
           const Divider(),

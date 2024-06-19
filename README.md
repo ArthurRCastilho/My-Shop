@@ -5,9 +5,6 @@ Este é um aplicativo no qual seu intuito é mostrar receitas de diferentes cate
 Neste aplicativo, aprendi conceitos de Inherited Widget, provider, padrão de projeto Observer, ChangeNotifier, SnackBar, DialogBox, Formularios,API REST Firebase, Future, Async, AnimatededBuilder
 <br>
 
-> :construction: Projeto em construção :construction:
-
-
 ### Layout
 
 > :construction: Projeto em construção :construction: <br>
@@ -57,8 +54,8 @@ Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
 - [x] AnimatededBuilder;
 - [x] Imagem Temporaria;
 - [x] Transição Hero;
-- [] Slivers;
-- [] Transições de telas;
+- [x] Slivers;
+- [x] Transições de telas;
 
 <br>
 > :construction: Projeto em construção :construction:
