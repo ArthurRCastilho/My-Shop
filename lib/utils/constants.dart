@@ -5,5 +5,5 @@ class Constants {
       'https://shop-study-4a13e-default-rtdb.firebaseio.com/products';
   static const ORDERS_BASE_URL =
       'https://shop-study-4a13e-default-rtdb.firebaseio.com/orders';
-  static const WEB_API_KEY = 'AIzaSyB2hMkiv4JeWRTuECZn5sM0BTQSFpcgY0A';
+  
 }

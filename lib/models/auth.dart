@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:myshop/data/store.dart';
 import 'package:myshop/exceptions/auth_exception.dart';
-import 'package:myshop/utils/constants.dart';
+import 'package:myshop/utils/api_util.dart';
 
 class Auth with ChangeNotifier {
   String? _token;
@@ -36,7 +36,7 @@ class Auth with ChangeNotifier {
     String urlFragment,
   ) async {
     final url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:$urlFragment?key=${Constants.WEB_API_KEY}';
+        'https://identitytoolkit.googleapis.com/v1/accounts:$urlFragment?key=${ApiUtil.WEB_API_KEY}';
     final response = await http.post(
       Uri.parse(url),
       body: jsonEncode({
