@@ -37,6 +37,11 @@ Neste projeto contém estruturas de fundamentos de flutter, sendo elas:
 - [x] Slivers;
 - [x] Transições de telas;
 
+### Dependências
+- ``Provider``
+- ``Intl``
+- ``Htpp``
+- ``Shared Preferences``
 
 ### Tecnologias utilizadas
 - ``VSCode``
